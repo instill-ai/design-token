@@ -7,7 +7,8 @@
   "types": "",
   "scripts": {
     "ts-types": "tsc --emitDeclarationOnly --outDir build",
-    "build": "pnpm rimraf build && node ./esbuild.js && pnpm ts-types"
+    "build": "pnpm rimraf build && node ./esbuild.js && pnpm ts-types",
+    "test": "node --no-warnings --loader tsx --test ./src/**/*.test.ts"
   },
   "keywords": [],
   "author": "instill-ai",
@@ -16,6 +17,7 @@
     "@types/node": "^18.7.23",
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.1.8",
+    "tsx": "^3.9.0",
     "typescript": "^4.8.4"
   },
   "dependencies": {

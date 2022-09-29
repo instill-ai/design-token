@@ -1,11 +1,12 @@
 import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
+import tokens from "./tokens/design-tokens.json";
 import { transform } from "./transform";
 
 export const instillDesignToken = plugin.withOptions<{ prefix?: string }>(
   (options = {}) => {
     return ({ addUtilities }) => {
-      const { typographys } = transform({ prefix: options.prefix });
+      const { typographys } = transform({ prefix: options.prefix, tokens });
       addUtilities({
         ".instill-input-focus-shadow": {
           boxShadow: "0px 0px 0px 3px rgba(64, 168, 245, 0.2)",
@@ -28,7 +29,7 @@ export const instillDesignToken = plugin.withOptions<{ prefix?: string }>(
     };
   },
   (options = {}) => {
-    const { colors } = transform({ prefix: options.prefix });
+    const { colors } = transform({ prefix: options.prefix, tokens });
     return {
       theme: {
         colors,
