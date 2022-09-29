@@ -6,24 +6,35 @@ export type TransformProps = {
 };
 
 export const transform = ({ prefix }: TransformProps) => {
+  let { color, typography, font, ...customStyle } = token;
+
+  // Transform color token to tailwind utility css
   let colors = Object.fromEntries(
-    Object.entries(token.color).map(([k, v]) => [
+    Object.entries(color).map(([k, v]) => [
       prefix + "-" + k.replaceAll("_", "-"),
       v.value,
     ])
   );
 
+  // Transform typography token to tailwind utility css
   let typographys: CSSRuleObject = Object.fromEntries(
-    Object.entries(token.font).map(([k, v]) => [
+    Object.entries(typography).map(([k, v]) => [
       "text" + "-" + prefix + "-" + k,
       {
-        fontFamily: v.value.fontFamily,
-        fontSize: `${v.value.fontSize}px`,
-        fontWeight: `${v.value.fontWeight}`,
-        lineHeight: `${v.value.lineHeight}px`,
+        fontFamily: v.fontFamily.value,
+        fontSize: `${v.fontSize.value}px`,
+        fontWeight: `${v.fontWeight.value}`,
+        lineHeight: `${v.lineHeight.value}px`,
+        textDecorationStyle: v.textDecoration.value,
+        letterSpacing: `${v.letterSpacing.value}`,
+        textIndent: `${v.paragraphIndent.value}`,
       },
     ])
   );
+
+  // Warn there had non transformed style
+  let customStyleTokens = Object.entries(customStyle).map(([k, _]) => k);
+  console.log("Non transformed style detected", customStyleTokens);
 
   return { colors, typographys };
 };
