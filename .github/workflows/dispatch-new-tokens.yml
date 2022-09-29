@@ -12,8 +12,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: tokens-dev
-      - name: Remove old tokens
-        run: rm -f "src/tokens/original-tokens.json"
       - name: create json from request body
         id: create-json
         uses: jsdaniell/create-json@1.1.2
