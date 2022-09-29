@@ -1,6 +1,6 @@
 import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
-import tokens from "./tokens/design-tokens.json";
+import tokens from "./tokens/original-tokens.json";
 import { transform } from "./transform";
 
 export const instillDesignToken = plugin.withOptions<{ prefix?: string }>(
