@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out new branch
-        uses: actions/checkout@token-dev
+        uses: actions/checkout@v3
+        with:
+          path: tokens-dev
       - name: Remove old tokens
         run: rm -f "src/tokens/original-tokens.json"
       - name: create json from request body
