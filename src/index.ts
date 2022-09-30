@@ -1,12 +1,10 @@
 import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
-import tokens from "./tokens/original-tokens.json";
-import { transform } from "./transform";
+import tokens from "./tokens/transformed-tokens.json";
 
 export const instillDesignToken = plugin.withOptions<{ prefix?: string }>(
   (options = {}) => {
     return ({ addUtilities }) => {
-      const { typographys } = transform({ prefix: options.prefix, tokens });
       addUtilities({
         ".instill-input-focus-shadow": {
           boxShadow: "0px 0px 0px 3px rgba(64, 168, 245, 0.2)",
@@ -24,15 +22,14 @@ export const instillDesignToken = plugin.withOptions<{ prefix?: string }>(
         ".instill-toggle-loading-shadow": {
           boxShadow: "0px 0px 0px 3px #FFFCE3",
         },
-        ...typographys,
+        ...tokens.typographys,
       });
     };
   },
   (options = {}) => {
-    const { colors } = transform({ prefix: options.prefix, tokens });
     return {
       theme: {
-        colors,
+        ...tokens.colors,
         fontFamily: {
           mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
           sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],

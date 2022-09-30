@@ -8,7 +8,8 @@
   "scripts": {
     "ts-types": "tsc --emitDeclarationOnly --outDir build",
     "build": "pnpm rimraf build && node ./esbuild.js && pnpm ts-types",
-    "test": "node --no-warnings --loader tsx --test ./src/**/*.test.ts"
+    "test": "node --no-warnings --loader tsx --test ./src/**/*.test.ts",
+    "transformed-tokens": "tsx ./src/scripts/transform-tokens.ts"
   },
   "keywords": [],
   "author": "instill-ai",
