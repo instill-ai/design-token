@@ -2,8 +2,13 @@
   "name": "@instill-ai/design-token",
   "version": "0.0.1",
   "private": false,
-  "type": "module",
   "description": "This is instill-ai's design token",
+  "repository": "https://github.com/instill-ai/design-token.git",
+  "bugs": "https://github.com/instill-ai/design-token/issues",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
   "main": "build/index.esm.js",
   "types": "",
   "scripts": {
