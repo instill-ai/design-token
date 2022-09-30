@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+
       - name: create json from request body
         id: create-json
         uses: jsdaniell/create-json@1.1.2
@@ -34,6 +35,7 @@ jobs:
         id: pnpm-cache
         run: |
           echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
@@ -41,6 +43,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+
       - name: Install dependencies
         run: rm -rf node_modules && pnpm i --frozen-lockfile
 

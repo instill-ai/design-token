@@ -1,8 +1,14 @@
 {
   "name": "@instill-ai/design-token",
   "version": "0.0.1",
-  "type": "module",
+  "private": false,
   "description": "This is instill-ai's design token",
+  "repository": "https://github.com/instill-ai/design-token.git",
+  "bugs": "https://github.com/instill-ai/design-token/issues",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
   "main": "build/index.esm.js",
   "types": "",
   "scripts": {
@@ -11,7 +17,12 @@
     "test": "node --no-warnings --loader tsx --test ./src/**/*.test.ts",
     "transformed-tokens": "tsx ./src/scripts/transform-tokens.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "instill-ai",
+    "design-system",
+    "design-token",
+    "tailwindcss"
+  ],
   "author": "instill-ai",
   "license": "MIT",
   "devDependencies": {
@@ -23,5 +34,8 @@
   },
   "dependencies": {
     "esbuild": "^0.15.9"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.0.0"
   }
 }
