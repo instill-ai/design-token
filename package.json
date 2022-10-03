@@ -8,8 +8,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "type": "module",
-  "main": "build/index.esm.js",
+  "main": "build/index.js",
   "types": "build/insex.d.ts",
   "scripts": {
     "ts-types": "tsc --emitDeclarationOnly --outDir build",

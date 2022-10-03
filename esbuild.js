@@ -1,18 +1,18 @@
-import esbuild from "esbuild";
-import peerDependencies from "./package.json" assert { type: "json" };
+const esbuild = require("esbuild");
+const { peerDependencies } = require("./package.json");
 
 esbuild
   .build({
     entryPoints: ["./src/index.ts"],
     bundle: true,
-    minify: false,
+    minify: true,
     sourcemap: false,
     target: "esnext",
     tsconfig: "./tsconfig.json",
     // Exclude the token.json
     external: ["./src/scripts/*", ...Object.keys(peerDependencies)],
-    format: "esm",
-    outfile: "./build/index.esm.js",
+    format: "cjs",
+    outfile: "./build/index.js",
     target: ["esnext", "node12"],
   })
   .catch(() => process.exit(1));
